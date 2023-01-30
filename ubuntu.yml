@@ -17,10 +17,10 @@
 - name: Install Snap packages we want
   community.general.snap:
     name:
-      - discord
-      - starship
       - yq
       - zoom-client
+      - kubectl
+      - helm
   become: yes
 
 - name: Install Snap packages in classic mode that we want
@@ -30,24 +30,11 @@
     classic: yes
   become: yes
 
-- name: Install Snap packages in edge mode that we want
-  community.general.snap:
-    name:
-      - zola
-    channel: edge
-  become: yes
-
 - name: Put auto APT script into place for Anacron
   ansible.builtin.copy:
     src: autoapt.sh
     dest: /etc/cron.daily/autoapt
     mode: preserve
-  become: yes
-
-- name: Make Firefox the default browser
-  community.general.alternatives:
-    name: x-www-browser
-    path: /usr/bin/firefox
   become: yes
 
 - name: Ensure .local/bin directory exists
@@ -61,19 +48,6 @@
     groups: docker
     append: yes
   become: yes
-
-- name: Set a list of Bash aliases
-  set_fact:
-    bash_aliases:
-      ag: rg
-      pareview.sh: "{{ lookup('env', 'HOME') }}/workspace/pareviewsh/pareview.sh"
-      s: "{{ lookup('env', 'HOME') }}/workspace/ce_scripts/helpers/ssh_connect.sh"
-
-- name: Set aliases in .bashrc
-  ansible.builtin.lineinfile:
-    path: "{{ lookup('env', 'HOME') }}/.bashrc"
-    line: "alias {{ item.key }}='{{ item.value }}'"
-  loop: "{{ bash_aliases|dict2items }}"
 
 - name: Remove Canonical spam advertisements in APT output
   ansible.builtin.copy:
