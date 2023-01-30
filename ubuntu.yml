@@ -21,6 +21,7 @@
       - zoom-client
       - kubectl
       - helm
+      - spotify
   become: yes
 
 - name: Install Snap packages in classic mode that we want
