@@ -19,8 +19,6 @@
     name:
       - yq
       - zoom-client
-      - kubectl
-      - helm
       - spotify
   become: yes
 
@@ -28,6 +26,8 @@
   community.general.snap:
     name:
       - code
+      - kubectl
+      - helm
     classic: yes
   become: yes
 
@@ -55,14 +55,6 @@
     content: ""
     dest: /etc/apt/apt.conf.d/20apt-esm-hook.conf
   become: yes
-
-- name: Show raw system output on Ubuntu startup instead of splash screen
-  ansible.builtin.lineinfile:
-    path: /etc/default/grub
-    regexp: '^GRUB_CMDLINE_LINUX_DEFAULT='
-    line: 'GRUB_CMDLINE_LINUX_DEFAULT=""'
-  become: yes
-  register: grub_splash
 
 - name: Update GRUB if needed
   shell: update-grub
