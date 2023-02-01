@@ -10,7 +10,7 @@
     - name: Gather facts we need
       ansible.builtin.setup:
         gather_subset:
-          - '!all'
+          - "!all"
           - lsb
     # Run the git setup first because we prompt for personal data input there if
     # config does not exist yet.
@@ -22,3 +22,8 @@
     - import_tasks: homebrew.yml
     - import_role:
         name: gantsign.oh-my-zsh
+      vars:
+        users:
+          - username: mirom
+            oh_my_zsh:
+              theme: pygmalion
