@@ -8,3 +8,8 @@
   community.general.dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/dock-fixed"
     value: "false"
+
+- name: Set favourite apps
+  community.general.dconf:
+    key: "/org/gnome/shell/favorite-apps"
+    value: "['google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', lens.desktop', 'spotify.desktop', 'teamworkchat_teamworkchat.desktop']"

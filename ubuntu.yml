@@ -20,6 +20,7 @@
       - yq
       - zoom-client
       - spotify
+      - teamworkchat
   become: yes
 
 - name: Install Snap packages in classic mode that we want
@@ -55,8 +56,3 @@
     content: ""
     dest: /etc/apt/apt.conf.d/20apt-esm-hook.conf
   become: yes
-
-- name: Update GRUB if needed
-  shell: update-grub
-  become: yes
-  when: grub_splash.changed
