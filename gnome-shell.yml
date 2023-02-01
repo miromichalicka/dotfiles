@@ -8,3 +8,13 @@
   community.general.dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/dock-fixed"
     value: "false"
+
+- name: Set size of icons in dock
+  community.general.dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size"
+    value: "34"
+
+- name: Turn off panel mode
+  community.general.dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/extend-height"
+    value: "false"
