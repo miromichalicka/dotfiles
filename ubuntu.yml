@@ -32,6 +32,8 @@
       - kubectl
       - helm
       - pycharm-community
+      - goland
+      - terraform
     classic: yes
   become: yes
 
